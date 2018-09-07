@@ -2,22 +2,85 @@
 
 namespace App\Http\Controllers;
 
+use App\Resource;
 use Illuminate\Http\Request;
 
 class ResourcesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $countries =
-            ["austria", "belarus", "belgium", "bulgaria", "china", "croatia", "cyprus", "czech_republic", "denmark", "estonia", "finland", "france", "germany",
-                "greece", "hungary", "iceland", "ireland", "isle_of_man", "italy", "kosovo", "latvia", "lithuania", "luxembourg", "malta", "moldova", "netherlands", "norway", "poland",
-                "portugal", "romania", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united_kingdom"];
-        return view('resources.index', compact('countries'));
+        $resources = Resource::all();
+        return view('resources.index', compact('resources'));
     }
 
-    public function show($country)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        return view("resources.{$country}.index",compact('country'));
+        //
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Resource  $resource
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Resource $resource)
+    {
+        return view('resources.show', compact('resource'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Resource  $resource
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Resource $resource)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Resource  $resource
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Resource $resource)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Resource  $resource
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Resource $resource)
+    {
+        //
     }
 }

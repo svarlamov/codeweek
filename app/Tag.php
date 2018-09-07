@@ -9,8 +9,5 @@ class Tag extends Model
     //
     protected $guarded = [];
 
-    public function hello(){
 
-
-    }
 }

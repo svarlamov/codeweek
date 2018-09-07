@@ -15,9 +15,17 @@
         <p>
 
         <ul>
-            @foreach($resources as $resource)
+            @foreach($resource->targets as $target)
                 <li>
-                    <a href="{{$resource->source}}">{{$resource->name}}</a>
+                    {{$target->name}}
+                </li>
+            @endforeach
+        </ul>
+
+        <ul>
+            @foreach($resource->resource_types as $type)
+                <li>
+                    {{$type->name}}
                 </li>
             @endforeach
         </ul>
