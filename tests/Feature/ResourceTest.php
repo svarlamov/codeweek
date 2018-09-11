@@ -63,6 +63,18 @@ class ResourceTest extends TestCase
 
     }
 
+    /** @test */
+    public function resource_has_languages()
+    {
+
+        $details = $this->get("/resources/" . $this->resource->id);
+
+        foreach ($this->resource->languages()->get() as &$value) {
+            $details->assertSee($value->name);
+        }
+
+    }
+
 }
 
 

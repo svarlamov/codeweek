@@ -1,6 +1,6 @@
 window._ = require('lodash');
 
-
+import InstantSearch from 'vue-instantsearch';
 
 
 /**
@@ -22,7 +22,7 @@ try {
 window.Vue = require('vue');
 
 
-
+Vue.use(InstantSearch);
 
 
 /**

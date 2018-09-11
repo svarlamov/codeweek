@@ -30,6 +30,14 @@
             @endforeach
         </ul>
 
+        <ul>
+            @foreach($resource->languages as $language)
+                <li>
+                    {{$language->name}}
+                </li>
+            @endforeach
+        </ul>
+
         </p>
         </p>
 

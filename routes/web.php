@@ -38,6 +38,8 @@ Route::get('setlocale', function (Request $request) {
 })->name("setlocale");
 
 
+Route::view('scan','scan');
+
 //Static pages
 Route::get('/', 'StaticPageController@index')->name('home');
 Route::get('/home', 'StaticPageController@index')->name('home');
@@ -49,6 +51,7 @@ Route::get('/codeweek4all', 'StaticPageController@index')->name('codeweek4all');
 Route::get('/training', 'StaticPageController@index')->name('training');
 
 Route::get('/resources', 'ResourcesController@index')->name('resources');
+Route::get('resources/search', 'SearchController@show');
 Route::get('/resources/{resource}', 'ResourcesController@show')->name('resources');
 
 Route::get('/events', 'EventController@index')->name('events_map');

@@ -11,5 +11,11 @@ $factory->define(Resource::class, function (Faker $faker) {
 
     ];
 
+})->afterCreating(App\Resource::class, function ($resource, $faker) {
+    $resource->targets()->save(factory(App\Target::class)->make());
+})->afterCreating(App\Resource::class, function ($resource, $faker) {
+    $resource->resource_types()->save(factory(App\ResourceType::class)->make());
+})->afterCreating(App\Resource::class, function ($resource, $faker) {
+    $resource->languages()->save(factory(App\Language::class)->make());
 });
 

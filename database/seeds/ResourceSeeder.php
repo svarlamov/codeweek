@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class ResourceTableSeeder extends Seeder
+class ResourceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,6 @@ class ResourceTableSeeder extends Seeder
     public function run()
     {
 
-        factory(App\Resource::class, 2)->create()->afterCreating(App\Resource::class, function ($resource, $faker) {
-            $resource->targets()->save(factory(App\Target::class)->make());
-        });;
+        factory(App\Resource::class, 20)->create();
     }
 }
