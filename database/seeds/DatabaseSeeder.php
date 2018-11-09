@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TargetTableSeeder::class);
         $this->call(LanguageSeeder::class);
         $this->call(ResourceTypeSeeder::class);
-        //$this->call(ResourceSeeder::class);
+        $this->call(ResourceSeeder::class);
         //$this->call(OldSeeder::class);
         //$this->call(EventSeeder::class);
 
