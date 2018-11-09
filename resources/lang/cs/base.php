@@ -35,12 +35,19 @@ return [
         'es' => 'Španělština',
         'fi' => 'Finština',
         'lt' => 'Litevština',
-        'sv' => 'Švédština'
+        'sv' => 'Švédština',
+        'al' => 'Albánština',
+        'ba' => 'Bosenština',
+        'mk' => 'Makedonština',
+        'me'=> 'Černohorština',
+        'rs' => 'Srbština',
+        'mt' => 'Maltština',
+        'tr' => 'Turečtina'
     ],
 
     'resources_local_title'=>'Programovací zdroje od',
     'are_you_a_teacher' => 'Jste učitel?',
-    'get_involved_banner' => 'Klikněte zde, abyste se dozvěděli, jak se zapojit!',
+    'get_involved_banner' => 'Klikněte zde, abyste se dozvěděl/a, jak se zapojit!',
     'days'=>'Dny',
     'hours'=>'Hodiny',
     'minutes'=>'Minuty',

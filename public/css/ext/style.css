@@ -55,7 +55,7 @@ dl, dt, dd, ol, ul, li {
 body {
     line-height: 1.5;
     color: #555;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', 'Raleway', sans-serif;
     font-size: 18px;
 }
 
@@ -9427,6 +9427,7 @@ body:not(.device-touch) .clients-grid li a {
 .team-content {
     margin-top: 15px;
     color: #777;
+    word-break: break-word;
 }
 
 .team-content p:last-child { margin-bottom: 0; }
@@ -11868,7 +11869,11 @@ body:not(.device-touch) .tagcloud a {
     border: 1px solid #DDD;
 }
 
-.img-circle { border-radius: 50% !important; }
+.img-circle {
+    border-radius: 50% !important;
+    width: 80px;
+    height: 80px;
+}
 
 .pagination > .active > a,
 .pagination > .active > span,
@@ -12975,7 +12980,7 @@ textarea.border-form-control {
 
 
 
-@media (min-width: 470px) {
+@media (min-width: 200px) {
     #top-language .name, #top-login .name{
         display: none;
     }
@@ -13058,7 +13063,6 @@ textarea.border-form-control {
 
 #top-language .nav.navbar a i, #top-login .nav.navbar .dropdown-toggle i {
     line-height: 0px;
-    font-size: 18px;
     margin-right: 5px;
 }
 
@@ -13094,4 +13098,59 @@ textarea.border-form-control {
     display: block;
     text-align: left;
     line-height: 60px;
+}
+
+.navbar-right .dropdown-menu {
+    right:0;
+    left:auto;
+}
+
+#primary-menu .sf-js-enabled.show {
+    float: right !important;
+    width: 100%;
+}
+
+.learning-card{
+    display:flex;
+    flex:1;
+    border:1px solid lightsteelblue;
+    box-shadow: 1px 1px;
+    margin: .5rem;
+    margin-left: 0;
+}
+
+.learning-card>a{
+    padding:.5rem;
+    flex:1;
+}
+
+.youtube-container{
+    height:500px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.youtube-iframe{
+    width:100%;
+}
+
+.scoreboard-total{
+    text-align: center;
+    font-size: 24px;
+    padding: 15px;
+}
+
+.country-name.macedonia {
+    font-size: 10px;
+}
+
+.scoreboard-country-name.macedonia {
+    font-size: 14px;
+}
+
+.scoreboard-country-name {
+    display: block;
+    font-size: 16px;
+    position: relative;
+    padding-top: 10px;
 }

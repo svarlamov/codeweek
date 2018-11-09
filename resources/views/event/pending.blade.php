@@ -4,7 +4,9 @@
     <section>
 
         <div class="container" style="padding-top:30px;">
-            <h1 style="display: inline-block;">Pending Events</h1>
+            <h1 style="display: inline-block;">
+                Pending Events
+            </h1>
             <hr>
 
             @role('super admin')
@@ -12,9 +14,10 @@
             <br/>
             @endrole
 
+            <div>Total of pending events: {{$events->total()}}</div>
 
             @if($events->count() > 0)
-                <div class="row">
+                <div class="row pending">
                     @foreach($events as $event)
                         @component('event.event_tile', ['event'=>$event])
                         @endcomponent

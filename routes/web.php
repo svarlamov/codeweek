@@ -45,10 +45,19 @@ Route::get('/', 'StaticPageController@index')->name('home');
 Route::get('/home', 'StaticPageController@index')->name('home');
 Route::get('/guide', 'StaticPageController@index')->name('guide');
 Route::get('/privacy', 'StaticPageController@index')->name('privacy');
+Route::get('/petition', 'StaticPageController@index')->name('petition');
 Route::get('/beambassador', 'StaticPageController@index')->name('beambassador');
 Route::get('/about', 'StaticPageController@index')->name('about');
 Route::get('/codeweek4all', 'StaticPageController@index')->name('codeweek4all');
-Route::get('/training', 'StaticPageController@index')->name('training');
+//Static training pages
+Route::get('/training', 'StaticPageController@index')->name('training.index');
+Route::get('/training/coding-without-computers', 'StaticPageController@index')->name('training.module-1');
+Route::get('/training/computational-thinking-and-problem-solving', 'StaticPageController@index')->name('training.module-2');
+Route::get('/training/visual-programming-introduction-to-scratch', 'StaticPageController@index')->name('training.module-3');
+Route::get('/training/creating-educational-games-with-scratch', 'StaticPageController@index')->name('training.module-4');
+Route::get('/training/making-robotics-and-tinkering-in-the-classroom', 'StaticPageController@index')->name('training.module-5');
+
+
 
 Route::get('/resources', 'ResourcesController@index')->name('resources');
 Route::get('resources/search', 'SearchController@show');
@@ -65,14 +74,15 @@ Route::patch('/events/{event}', 'EventController@update');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/my', 'EventController@my')->middleware('auth')->name('my_events');
+Route::get('/my/reportable', 'EventController@myreportable')->middleware('auth')->name('my_reportable_events');
 Route::get('/search', 'SearchController@search')->name('search_event');
 Route::get('/scoreboard', 'ScoreboardController@index')->name('scoreboard');
-Route::patch('user', 'UserController@update')->name('user.update');
+Route::patch('user', 'UserController@update')->name('user.update')->middleware('auth');
 Route::get('view/{event}/{slug}', 'EventController@show')->name('view_event');
-Route::get('events_to_report', 'ReportController@list')->name('report_list');
-Route::get('certificates', 'CertificateController@list')->name('certificates');
-Route::get('event/edit/{event}', 'EventController@edit')->name('edit_event');
-Route::get('event/report/{event}', 'ReportController@index')->name('report_event');
+Route::get('events_to_report', 'ReportController@list')->name('report_list')->middleware('auth');
+Route::get('certificates', 'CertificateController@list')->name('certificates')->middleware('auth');
+Route::get('event/edit/{event}', 'EventController@edit')->name('edit_event')->middleware('auth');
+Route::get('event/report/{event}', 'ReportController@index')->name('report_event')->middleware('auth');
 Route::post('event/report/{event}', 'ReportController@store');
 //Route::resource('school', 'SchoolController');
 Route::get('schools', 'SchoolsController@index')->name('schools');
@@ -83,7 +93,6 @@ Route::delete('api/users/avatar', 'Api\UserAvatarController@delete')->middleware
 Route::get('api/event/list', 'Api\EventsController@list')->name('event_list');
 Route::get('api/event/detail', 'Api\EventsController@detail')->name('event_list');
 Route::get('api/event/closest', 'Api\EventsController@closest');
-//Route::get('api/event/{event}/generate', 'Api\EventsController@generate');
 
 Route::post('api/event/report/{event}', 'ReportController@store')->middleware('auth');
 
@@ -96,9 +105,33 @@ Route::group(['middleware' => ['role:super admin']], function () {
     Route::get('mail/{event}', 'EmailController@create')->middleware('auth');
 
     Route::get('/mail/template/ambassadors/new', 'MailTemplateController@ambassador');
+    Route::get('/mail/template/ambassadors/remind_ambassador', 'MailTemplateController@remind_ambassador');
     Route::get('/mail/template/creators/registered', 'MailTemplateController@registered');
     Route::get('/mail/template/creators/approved', 'MailTemplateController@approved');
     Route::get('/mail/template/creators/rejected', 'MailTemplateController@rejected');
+
+    Route::get('stats', [
+        'uses' => 'StatsController@getMetrics',
+        'as' => 'stats'
+    ]);
+
+
+    Route::get('stats/events/years', [
+        'uses' => 'StatsController@getEventsPerYear',
+        'as' => 'stats.year'
+    ]);
+
+
+    Route::get('stats/events/organiser', [
+        'uses' => 'StatsController@getEventsPerOrganiserType',
+        'as' => 'stats.organiser'
+    ]);
+
+    Route::get('stats/events/reported', [
+        'uses' => 'StatsController@getNotReportedEventsGlobal',
+        'as' => 'stats.notreported'
+    ]);
+    Route::get('/mail/template/remind/creators', 'MailTemplateController@remindcreators');
 });
 
 Route::group(['middleware' => ['role:super admin|ambassador']], function () {

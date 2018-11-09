@@ -30,7 +30,14 @@
 
     <link rel="stylesheet" href="{{asset('css/ext/responsive.css')}}" type="text/css" />
 
-
+    @if(App::getLocale() == 'lt' || App::getLocale() == 'me' ||
+        App::getLocale() == 'rs' || App::getLocale() == 'lv')
+        <style>
+            body {
+                font-family:'Open Sans', sans-serif;
+            }
+        </style>
+    @endif
 
 
     <link rel="stylesheet" href="{{asset('css/ext/colors.css')}}" type="text/css" />
@@ -56,7 +63,7 @@
     </script>
 
     <!-- Title, keywords, description -->
-    <meta name="description" content="October 15 - 23, 2016: a week to celebrate coding in Europe, encouraging citizens to learn more about technology, and connecting communities and organizations who can help you learn coding." />
+    <meta name="description" content="October 6 - 21, 2018: a week to celebrate coding in Europe, encouraging citizens to learn more about technology, and connecting communities and organizations who can help you learn coding." />
 
 
     <title>Europe Code Week</title>
@@ -88,9 +95,7 @@
 <script type="text/javascript" src="{{ asset('js/ext/plugins.js') }}"></script>
 @include('scripts.countdown')
 <script type="text/javascript" src="{{ asset('js/ext/functions.js') }}"></script>
-
-
-
+<script src=//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js charset=utf-8></script>
 <script src="https://unpkg.com/vue-select@latest"></script>
 
 

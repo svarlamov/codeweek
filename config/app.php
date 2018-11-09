@@ -79,32 +79,7 @@ return [
     */
 
     'locale' => 'en',
-    'locales' => [
-        //'bg',
-        'cs',
-        'da',
-        'de',
-        'el',
-        'en',
-        'es',
-        'et',
-        //'fi',
-        //'fr',
-        //'ga',
-        'hr',
-        //'hu',
-        //'it',
-        'lt',
-        'lv',
-        //'mt',
-        //'nl',
-        //'pl',
-        //'pt',
-        //'ro',
-        //'sk',
-        //'sl',
-        //'sv'
-    ],
+    'locales' => explode(',', env('LOCALES')),
 
     /*
     |--------------------------------------------------------------------------
@@ -185,6 +160,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\CalendarServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,

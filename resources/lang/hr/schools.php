@@ -30,7 +30,7 @@ return [
         "title2" => "Organizirajte nastavni sat, obuku ili događanje i unesite to na kartu.",
         "content" => [
             "Neovisno o tome imate li znanja o programiranju, bez problema možete organizirati nastavni sat u svojem razredu, dan otvorenih vrata ili događanje u svojoj školi. Samo pronađite datum i registrirajte svoju aktivnost na karti u nastavku. Ako mislite da vam u pripremi nastavnog sata treba podrška u vezi s programiranjem, idite na sljedeći odjeljak.",
-            "Pregledavanjem karte u nastavku pogledajte neke primjere aktivnosti koje se organiziraju i dodajte svoju kako biste se pridružili tisućama kolega podučavatelja diljem Europe i izvan nje: [embed map]"
+            "Pregledavanjem karte u nastavku pogledajte neke primjere aktivnosti koje se organiziraju i dodajte svoju kako biste se pridružili tisućama kolega podučavatelja diljem Europe i izvan nje: "
 
         ],
         "button" => [
@@ -54,7 +54,7 @@ return [
         "title1" => "U potrazi ste za dodatnim izazovom?",
         "title2" => "Razvijte mrežu aktivnosti, angažirajte čim više učenika i osvojite Potvrdu o izvrsnosti",
         "content" => [
-            "Code Week 4 All izaziva vas da se udružite s drugim nastavnicima ili školama te da sudjelujete u međunarodnoj zajednici istomišljenika koji učenicima pružaju priliku da naprave prve korake u programiranju. Izgradite savez u koji je uključeno više od 1 000 učenika i osvojit ćete Potvrdu o izvrsnosti.",
+            "Code Week 4 All izaziva vas da se udružite s drugim nastavnicima ili školama te da sudjelujete u međunarodnoj zajednici istomišljenika koji učenicima pružaju priliku da naprave prve korake u programiranju. Izgradite savez u koji je uključeno više od 500 učenika i osvojit ćete Potvrdu o izvrsnosti.",
 
         ],
         "button" => [

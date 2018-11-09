@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
    /*
    |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ return [
         'hr' => 'Horvaadi',
         'de' => 'Saksa',
         'pl' => 'Poola',
-        'cs' => 'Tđehhi',
+        'cs' => 'Tšehhi',
         'el' => 'Kreeka',
         'pt' => 'Portugali',
         'da' => 'Taani',
@@ -35,12 +35,19 @@ return [
         'es' => 'Hispaania',
         'fi' => 'Soome',
         'lt' => 'Leedu',
-        'sv' => 'Rootsi'
+        'sv' => 'Rootsi',
+        'al' => 'Albaania',
+        'ba' => 'Bosnia',
+        'mk' => 'Makedoonia',
+        'me'=> 'Montenegro',
+        'rs' => 'Serbia',
+        'mt' => 'türgi keel',
+        'tr' => 'malta keel'
     ],
 
     'resources_local_title'=>'Programmeerimismaterjale:',
-    'are_you_a_teacher' => 'Ka oled őpetaja?',
-    'get_involved_banner' => 'Klőpsa siin, et leida teavet, kuidas osaleda!',
+    'are_you_a_teacher' => 'Kas oled õpetaja?',
+    'get_involved_banner' => 'Klõpsa siin, et leida teavet, kuidas osaleda!',
     'days'=>'päeva',
     'hours'=>'tundi',
     'minutes'=>'minutit',

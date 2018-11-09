@@ -35,11 +35,11 @@
                                 </h2>
 
                                 @if($country->facebook)
-                                    <div class="justify-center text-center mb-8">@lang('ambassador.visit_the') <a href="{{$country->facebook}}">@lang('ambassador.local_facebook_page')</a></div>
+                                    <div class="justify-center text-center">@lang('ambassador.visit_the') <a href="{{$country->facebook}}">@lang('ambassador.local_facebook_page')</a></div>
                                 @endif
 
                                 @if($country->website)
-                                    <div><a href="{{$country->website}}">@lang('ambassador.local_website')</a></div>
+                                    <div class="justify-center text-center mb-8">@lang('ambassador.visit_the') <a href="{{$country->website}}">@lang('ambassador.local_website')</a></div>
                                 @endif
                             @endif
                         @endforeach
@@ -52,56 +52,55 @@
                     </div>
 
 
+                    <div style="display: flex;flex-wrap: wrap;flex-direction: row;">
+                        @forelse ($ambassadors as $ambassador)
 
-                    @forelse ($ambassadors as $ambassador)
-
-                        <div class="col-md-3 col-sm-6 bottommargin">
-                            <div class="team">
-                                <div class="team-image">
-                                    <img src="{{$ambassador->avatar}}" alt="" width="80" height="80" class="img-circle">
-                                </div>
-
-                                <div class="team-desc">
-                                    <div class="team-title">
-                                        <h4>{{ $ambassador->fullName() }}</h4>
-                                    </div>
-                                    <div class="team-content">
-                                        <p>{{ $ambassador->bio }}</p>
+                            <div class="bottommargin flex" style="padding:0px 15px;flex: 0 0 {{$ambassadors->count() > 2 ? '33.3%' : '50%'}};">
+                                <div class="team">
+                                    <div class="team-image">
+                                        <img src="{{$ambassador->avatar}}" alt="" width="80" height="80" class="img-circle">
                                     </div>
 
-                                    @if($ambassador->email)
-                                        <a href="mailto:{{ $ambassador->email }}"
-                                           class="social-icon inline-block si-small si-light si-rounded si-mail">
-                                            <i class="icon-line-mail"></i>
-                                            <i class="icon-line-mail"></i>
-                                        </a>
-                                    @endif
-                                    @if($ambassador->twitter)
+                                    <div class="team-desc">
+                                        <div class="team-title">
+                                            <h4>{{ $ambassador->fullName() }}</h4>
+                                        </div>
+                                        <div class="team-content">
+                                            <p>{{ $ambassador->bio }}</p>
+                                        </div>
 
-                                        <a href="http://twitter.com/{{ $ambassador->twitter }}"
-                                           class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                    @endif
+                                        @if($ambassador->email)
+                                            <a href="mailto:{{ $ambassador->email }}"
+                                               class="social-icon inline-block si-small si-light si-rounded si-mail">
+                                                <i class="icon-line-mail"></i>
+                                                <i class="icon-line-mail"></i>
+                                            </a>
+                                        @endif
+                                        @if($ambassador->twitter)
 
-                                    @if($ambassador->website)
+                                            <a href="http://twitter.com/{{ $ambassador->twitter }}"
+                                               class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                                <i class="icon-twitter"></i>
+                                                <i class="icon-twitter"></i>
+                                            </a>
+                                        @endif
 
-                                        <a href="{{ $ambassador->website }}"
-                                           class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-world"></i>
-                                            <i class="icon-world"></i>
-                                        </a>
-                                    @endif
+                                        @if($ambassador->website)
+
+                                            <a href="{{ $ambassador->website }}"
+                                               class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                                <i class="icon-world"></i>
+                                                <i class="icon-world"></i>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-
-
-                    @empty
-                        @lang('ambassador.no_ambassadors') :(<br/>
-                    @endforelse
+                        @empty
+                            @lang('ambassador.no_ambassadors') :(<br/>
+                        @endforelse
+                    </div>
 
 
                 </div>
@@ -123,7 +122,7 @@
                                         <img src="https://s3-eu-west-1.amazonaws.com/codeweek-s3/flags/{{strtolower($country->country_iso)}}.png"
                                              alt="{{$country->country_iso}}">
 
-                                        <div class="country-name">
+                                        <div class="country-name {{strtolower($country->name)}}">
                                             @lang('countries.'.$country->name) ({{$country->total}})
                                         </div>
                                     </div>

@@ -30,10 +30,13 @@
                 </div>
             </div>
 
-            <br/>
+            <hr/>
 
             <h2>Presentations and toolkits</h2>
             <ul>
+
+                <li><a href="https://s3-eu-west-1.amazonaws.com/codeweek-s3/docs/EU+Code+Week+2018+Communications+Toolkit.zip">EU Code Week 2018 Communications Toolkit</a></li>
+                <li><a href="https://s3-eu-west-1.amazonaws.com/codeweek-s3/docs/Teachers+Toolkit.zip">EU Code Week 2018 Teachers Toolkit</a></li>
                 <li>EU Code Week 2018 Leaflet.
 
                     <a href="https://s3-eu-west-1.amazonaws.com/codeweek-s3/leaflets/20180326_Codeweek_2018_EN.pdf">EN</a>
@@ -93,31 +96,8 @@
 
 
                 </li>
-                <li>Presentation of EU Code Week 2018. (<a href="{{asset('docs/EUCodeWeek2018.pdf')}}">PDF</a>, <a
-                            href="{{asset('docs/EUCodeWeek2018.pptx')}}">PPTX</a>)
-                </li>
-                <li>Toolkit: how to organise a Europe Code Week event. (<a
-                            href="http://events.codeweek.eu/guide/">WEB</a>, <a
-                            href="{{asset('docs/codeeu_toolkit.pdf')}}">PDF</a>)
-                </li>
-                <li>Derek Breen's Digital Game Design from Scratch (<a
-                            href="{{asset('docs/DGD-Scratch-Teacher-Guide-Abrdgd.pdf')}}"
-                            target="_blank">curriculum guide</a>, <a
-                            href="https://www.youtube.com/playlist?list=PLOJbImijbLrTlg1ywLCOwesrZC14E5fuM"
-                            target="_blank">video
-                        playlist </a>)
-                </li>
-                <li>
-                    <a href="http://www.slideshare.net/alessandrobogliolo/europe-code-week-in-the-classroom-teacher-guide"
-                       target="_blank">Toolkit for teachers: how to engage your classroom in Europe Code Week</a></li>
-                <li>
-                    <a href="https://www.slideshare.net/alessandrobogliolo/codeweek4all-challenge-2016-guidelines-for-schools-80177324"
-                       target="_blank">Toolkit for schools</a></li>
-                <li><a href="http://www.slideshare.net/alessandrobogliolo/europe-code-week-worldwide-guide"
-                       target="_blank">Toolkit
-                        for worldwide event organizers: 6 steps in 1 slide</a></li>
-                <li><a href="https://www.slideshare.net/alessandrobogliolo/codeweekeu-2017-guidelines-for-librarians"
-                       target="_blank">Toolkit for librarians prepared by Public Libraries 2020</a></li>
+
+
             </ul>
 
             <h2>Local resources in your language</h2>
@@ -160,10 +140,12 @@
                     JavaScript, Internal & External JavaScript, and JavaScript Examples.
                 </li>
                 <li>
-                    <strong><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=908519492&mt=8&ls=1"
-                               target="_blank">Swift Playgrounds</a></strong>: Swift Playgrounds is a revolutionary app
-                    for iPad
-                    that makes learning Swift interactive and fun.
+                    <strong><a href="https://www.apple.com/swift/playgrounds/" target="_blank">Swift Playgrounds</a></strong>:
+                    Learn to code in a playful way! Solve puzzles and the same time get acquainted with Swift, a powerful programming language created by Apple and used by the pros to build today’s most popular apps.
+                </li>
+                <li>
+                    <strong><a href="https://www.apple.com/105/media/uk/education/codeweek2018/IncredibleCodeMachine_guide_092418_Final_en-GB.pdf" target="_blank">The Incredible Code Machine with Swift Playgrounds - Facilitator Guide</a></strong>:
+                    Celebrate EU Code Week — host your own coding event with Swift Playgrounds on iPad. The Facilitator Guide is available in other languages, check the national pages to see if it is available in yours.
                 </li>
                 <li><strong><a href="https://open.sap.com/courses/build1" target="_blank">Design Your First App with
                             Build*</a></strong>:
@@ -338,6 +320,22 @@
                     club as an after school, extra curricular activity or as a structured programme within the school
                     day.
                 </li>
+                <li>
+                    <strong><a href="https://education.minecraft.net/">Minecraft Education</a></strong>:
+                    Online, educational platform where students can learn in an immersive way and in collaboration how to code, and the same time familiarize themselves with various STEM subjects with the guidelines and the tailored lesson plans.
+                </li>
+                <li>
+                    <strong><a href="https://www.microsoft.com/en-us/makecode">MakeCode</a></strong>:
+                    Free, open source platform for creating engaging computer science learning experiences that support a progression path into real-world programming. Learners get immersed in computer science while creating fun projects.
+                </li>
+                <li>
+                    <strong><a href="https://www.bebras.org/?q=about">Bebras</a></strong>:
+                    Information on the international initiative aiming to promote Informatics (Computer Science, or Computing) and computational thinking among school students at all ages.
+                </li>
+                <li>
+                    <strong><a href="https://csunplugged.org/en/">CS Unplugged</a></strong>:
+                    Collection of free teaching material that teaches Computer Science through engaging games and puzzles.
+                </li>
             </ul>
 
             <h2>Full online courses for advanced learners</h2>
@@ -411,6 +409,22 @@
                     introduce coding to students. They will make pupils understand coding concepts in a fun way and
                     offer
                     teachers many ideas and resources.
+                </li>
+                <li>
+                    <strong><a href="http://earsketch.gatech.edu/landing/#/" target="_blank">earsketch</a></strong>:
+                    Online platform instructing how to write code, designed to be used within a high school introductory computing course. In addition to computer science, it is also used in music, and music technology.
+                </li>
+                <li>
+                    <strong><a href="https://developers.google.com/blockly/" target="_blank">Blocky</a></strong>:
+                    Game repository built by Google, introducing basic coding concepts adding a visual code editor to web and Android apps. In addition, a few games can be found <a href="https://blockly-games.appspot.com/">here Blocky Games.</a>
+                </li>
+                <li>
+                    <strong><a href="http://resources.makeblock.academy/2018/10/08/codeweek-2018/" target="_blank">MakeBlock</a></strong>:
+                    Lesson plans and tutorials about Python and Artificial Intelligence activities for students in Primary School.
+                </li>
+                <li>
+                    <strong><a href="https://s3-eu-west-1.amazonaws.com/codeweek-s3/docs/CodeWeek+2018+Code+Hunting+Games+guide.pdf">Code Hunting Game Guide</a></strong>:
+                    Helps organisers to prepare an original treasure hunt game designed for Code Week. People compete in teams and visit different locations to solve a puzzle. This guide explains step by step what needs to be done to set up the game in your school, park or across the whole city.
                 </li>
             </ul>
 

@@ -1,9 +1,10 @@
 <template>
     <div>
+
         <div class="level">
-            <img :src="picture" class="mr-1">
+            <img :src="pictureClone" class="mr-1">
         </div>
-        <input type="hidden" name="picture" :value="imageName">
+        <input type="hidden" name="picture" :value="imageClone">
         <form method="POST" enctype="multipart/form-data">
             <image-upload name="picture" class="mr-1" @loaded="onLoad"></image-upload>
         </form>
@@ -19,10 +20,11 @@
     export default {
 
         components: {ImageUpload},
+        props: ['image','picture'],
         data() {
             return {
-                picture: '',
-                imageName: ''
+                pictureClone: this.picture || '',
+                imageClone: this.image || '',
             }
         },
         methods: {
@@ -38,8 +40,8 @@
                 axios.post(`/api/events/picture`, data)
                     .then((result) => {
                         console.log(result);
-                        this.picture = result.data.path;
-                        this.imageName = result.data.imageName;
+                        this.pictureClone = result.data.path;
+                        this.imageClone = result.data.imageName;
                         flash('Picture uploaded !');
                     })
             },
@@ -47,7 +49,7 @@
                 axios.delete(`/api/event/picture`)
                     .then(() => flash('Event Picture deleted!'));
 
-                this.picture = 'https://s3-eu-west-1.amazonaws.com/codeweek-dev/events/pictures/default.png';
+                this.pictureClone = 'https://s3-eu-west-1.amazonaws.com/codeweek-dev/events/pictures/default.png';
             }
         }
     }

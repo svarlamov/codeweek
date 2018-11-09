@@ -14,6 +14,8 @@ class AmbassadorHelper
     {
 
         $ambassadors_count = User::role('ambassador')
+            ->whereNotNull("avatar_path")
+            ->whereNotNull("bio")
             ->where("country_iso","<>", "")
             ->join('countries', 'country_iso', '=', 'countries.iso')
             ->groupBy('country_iso')
@@ -24,6 +26,17 @@ class AmbassadorHelper
 
         return $ambassadors_count;
 
+
+    }
+
+    public static function getByCountry($country_iso)
+    {
+
+        $ambassadors = User::role('ambassador')
+            ->where("country_iso","=", $country_iso)
+            ->get();
+
+        return $ambassadors;
 
     }
 

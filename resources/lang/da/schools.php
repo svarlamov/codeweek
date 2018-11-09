@@ -30,7 +30,7 @@ return [
         "title2" => "Afhold en lektion, en træningssession eller et arrangement, og tilføj det på kortet.",
         "content" => [
             "Uanset om du har kendskab til kodning og programmering eller ej, er det let at afholde en lektion i klasseværelset, en åbent hus-dag eller et arrangement på skolen. Du skal bare vælge en dato og registrere aktiviteten på kortet nedenfor. Hvis du mener, at du skal bruge hjælp til at forberede en kodelektion, skal du gå videre til næste afsnit.",
-            "Tag et kig på nogle eksempler på aktiviteter, der afholdes, ved at se på kortet nedenfor, og tilføj din egen aktivitet, så du kan blive en af de flere tusinde undervisere i Europa og resten af verden: [embed map]"
+            "Tag et kig på nogle eksempler på aktiviteter, der afholdes, ved at se på kortet nedenfor, og tilføj din egen aktivitet, så du kan blive en af de flere tusinde undervisere i Europa og resten af verden: "
 
         ],
         "button" => [
@@ -54,7 +54,7 @@ return [
         "title1" => "Er du på udkig efter en ekstra udfordring?",
         "title2" => "Opbyg et netværk af aktiviteter, aktivér så mange elever som muligt, og få et kvalitetscertifikat",
         "content" => [
-            "Code Week 4 All udfordrer dig til at slå dig sammen med andre lærere eller skoler og deltage i et internationalt fællesskab af ligesindede, som giver eleverne mulighed for at tage deres første skridt inden for kodning. En alliance, der aktiverer over 1 000 elever, udløser et kvalitetscertifikat.",
+            "Code Week 4 All udfordrer dig til at slå dig sammen med andre lærere eller skoler og deltage i et internationalt fællesskab af ligesindede, som giver eleverne mulighed for at tage deres første skridt inden for kodning. En alliance, der aktiverer over 500 elever, udløser et kvalitetscertifikat.",
 
         ],
         "button" => [

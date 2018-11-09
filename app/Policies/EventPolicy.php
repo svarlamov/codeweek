@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Event;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Log;
 
@@ -14,6 +15,7 @@ class EventPolicy
     public function approve(User $user, Event $event)
     {
 
+        Log::info("can approve ?" . $user->hasRole('super admin'));
 
         if ($user->hasRole('super admin')) {
             return true;
@@ -29,6 +31,19 @@ class EventPolicy
     public function report(User $user, Event $event)
     {
 
+
+        if ($event->status != "APPROVED") {
+            return false;
+        }
+
+        if (!Carbon::parse($event->start_date)->isPast()) {
+            return false;
+        };
+
+        if ($user->hasRole('super admin')) {
+            return true;
+        }
+
         if ($user->email === $event->owner->email) {
             return true;
         }
@@ -39,11 +54,11 @@ class EventPolicy
     public function view(User $user, Event $event)
     {
 
+
         Log::info("Trying to view event {$event->id} from {$event->owner->email} as user {$user->id} with email {$user->email}");
 
 
-
-        if($event->status == "APPROVED"){
+        if ($event->status == "APPROVED") {
             return true;
         }
 
@@ -52,12 +67,12 @@ class EventPolicy
         }
 
         if ($user->hasRole('super admin')) {
+
             return true;
         }
         if ($user->hasRole('ambassador')) {
             return $event->country_iso === $user->country_iso;
         }
-
 
 
         return false;
@@ -67,18 +82,26 @@ class EventPolicy
     {
 
         Log::info("Trying to edit event {$event->id} from {$event->owner->email} as user {$user->id} with email {$user->email}");
+        Log::info("Is super admin? {$user->hasRole('super admin')}");
+        Log::info("Is ambassador ? {$user->hasRole('ambassador')}");
 
+
+        if ($user->email === $event->owner->email) {
+            Log::info("Email is matching");
+            return true;
+        }
 
         if ($user->hasRole('super admin')) {
             return true;
         }
+
         if ($user->hasRole('ambassador')) {
-            return $event->country_iso === $user->country_iso;
+            if ($event->country_iso === $user->country_iso) return true;
+            Log::info("Country is not matching");
         }
 
-        if ($user->email === $event->owner->email) {
-            return true;
-        }
+
+        Log::info("Email is not matching -> EDITION REFUSED");
 
         return false;
     }

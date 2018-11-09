@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Certificate;
 use App\Event;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -20,7 +21,7 @@ class ReportEventTest extends TestCase
         parent::setUp();
 
         $this->seed('RolesAndPermissionsSeeder');
-        $this->event = create('App\Event', []);
+        $this->event = create('App\Event', ["status"=>"APPROVED","start_date"=>Carbon::now()->subMonth(1)]);
 
 
     }
@@ -48,6 +49,22 @@ class ReportEventTest extends TestCase
 
 
         $this->get('/view/' . $this->event->id . '/random')
+            ->assertDontSee("report-event");
+
+
+    }
+
+    /** @test */
+    public function owners_should_not_see_the_report_banner_if_event_is_not_over_yet()
+    {
+
+        $this->withExceptionHandling();
+
+
+        $future_event = create('App\Event', ["start_date"=>Carbon::now()->addMonth(1)]);
+        $this->signIn($future_event->owner);
+
+        $this->get('/view/' . $future_event->id . '/random')
             ->assertDontSee("report-event");
 
 
@@ -140,6 +157,63 @@ class ReportEventTest extends TestCase
             ->assertDontSee($alreadyReportedEvent->title)
             ->assertDontSee($futureEvent->title)
         ;
+    }
+
+    /** @test */
+    public function text_should_not_be_detected_as_greek(){
+
+        $certificate = new Certificate($this->event);
+        $this->assertFalse($certificate->is_greek());
+
+    }
+
+    /** @test */
+    public function text_should_be_detected_as_greek(){
+
+        $this->event->name_for_certificate = "Λιανού Κυριακή - Lianou Kiriaki 10ο Δημοτικό Σχολείο Αιγάλεω";
+        $certificate = new Certificate($this->event);
+        $this->asserttrue($certificate->is_greek());
+
+
+    }
+
+    /** @test */
+    public function text_should_be_detected_as_greek_with_all_uppercase(){
+
+        $this->event->name_for_certificate = "ΖΑΧΑΡΩΦ ΣΟΝΙΑ";
+        $certificate = new Certificate($this->event);
+        $this->asserttrue($certificate->is_greek());
+
+
+    }
+
+    /** @test */
+    public function text_should_be_detected_as_greek_with_one_greek_char(){
+
+        $this->event->name_for_certificate = "This is a Σ";
+        $certificate = new Certificate($this->event);
+        $this->asserttrue($certificate->is_greek());
+
+
+    }
+
+    /** @test */
+    public function text_should_not_be_detected_as_greek_with_one_special_char(){
+
+        $this->event->name_for_certificate = "Teacher Di Lella Lucia and the 1D con l’evento  “Di Pixel in Pixel.. cosa apparirà?:stuck_out_tongue_winking_eye:";
+        $certificate = new Certificate($this->event);
+        $this->assertfalse($certificate->is_greek());
+
+
+    }
+
+    /** @test */
+    public function text_should_not_be_detected_as_greek_with_several_special_chars(){
+
+        $this->event->name_for_certificate = 'Nemyriv Educational Establishment "Comprehensive Shool of I-III grades №2-lyceum" - of Nemyriv town Concil Vinnytsia Region';
+        $certificate = new Certificate($this->event);
+        $this->assertfalse($certificate->is_greek());
+
     }
 
 

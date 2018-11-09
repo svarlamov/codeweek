@@ -139,6 +139,15 @@
 
                 <p>Want to take a step further and take on the Code Week 4 All challenge?</p>
 
+                <p>If you are interested in linking your activity with those organised by friends, colleagues or other contacts, please find your unique Code Week 4 All code below:</p>
+
+                <p>
+                    <strong>{{$event->codeweek_for_all_participation_code}}</strong>
+                </p>
+
+
+
+
                 <ul>
                     <li>
                         <p>
@@ -155,7 +164,7 @@
                         Don’t miss the latest updates. Follow #CodeWeek on social media!
                     </span>
                     <a target="_blank" href="https://www.facebook.com/codeEU"><img src="{{asset('img/facebook_circle.png')}}"></a>
-                    <a target="_blank" href="https://twitter.com/search?q=%23codeEU&amp;f=realtime"><img src="{{asset('img/twitter_circle.png')}}"></a>
+                    <a target="_blank" href="https://twitter.com/search?q=%23codeweek&amp;f=realtime"><img src="{{asset('img/twitter_circle.png')}}"></a>
                 </div>
 
 

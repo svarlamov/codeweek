@@ -30,7 +30,7 @@ return [
         "title2" => "Organisieren Sie eine Lehrstunde, eine Schulung oder eine Veranstaltung und markieren Sie sie auf der Karte.",
         "content" => [
             "Egal, ob Sie sich bereits mit dem Programmieren auskennen oder nicht, können Sie ganz einfach eine Lehrstunde in Ihrem Klassenzimmer, einen Tag der offenen Tür oder eine Veranstaltung an Ihrer Schule ausrichten. Überlegen Sie sich nur ein Datum und registrieren Sie Ihre Aktivität auf der nachstehenden Karte. Wenn Sie glauben, dass Sie Unterstützung bei der Vorbereitung einer Lehrstunde zum Programmieren benötigen, wechseln Sie zum nächsten Abschnitt.",
-            "Werfen Sie einen Blick auf einige Beispiele für Aktivitäten, die ausgerichtet werden, indem Sie die Karte unten ansehen und fügen Sie Ihre eigene hinzu, um sich tausenden Lehrerkolleg*innen in ganz Europa und darüber hinaus anzuschließen: [embed map]"
+            "Werfen Sie einen Blick auf einige Beispiele für Aktivitäten, die ausgerichtet werden, indem Sie die Karte unten ansehen und fügen Sie Ihre eigene hinzu, um sich tausenden Lehrerkolleg*innen in ganz Europa und darüber hinaus anzuschließen: "
 
         ],
         "button" => [
@@ -54,7 +54,7 @@ return [
         "title1" => "Suchen Sie nach einer besonderen Herausforderung?",
         "title2" => "Bauen Sie ein Netzwerk an Aktivitäten auf, motivieren Sie so viele Schüler*innen wie möglich und verdienen Sie sich ein Exzellenzzertifikat",
         "content" => [
-            "Code Week für alle fordert Sie dazu auf, Ihre Kräfte mit anderen Lehrkräften oder Schulen zu bündeln und sich an einer internationalen Gemeinschaft Gleichgesinnter zu beteiligten, um Ihren Schüler*innen die Möglichkeit zu geben, ihre ersten Schritte im Programmieren zu gehen. Errichten Sie eine Allianz, die mehr als 1 000 Schülerinnen und Schüler motiviert, und Sie erhalten ein Exzellenzzertifikat.",
+            "Code Week für alle fordert Sie dazu auf, Ihre Kräfte mit anderen Lehrkräften oder Schulen zu bündeln und sich an einer internationalen Gemeinschaft Gleichgesinnter zu beteiligten, um Ihren Schüler*innen die Möglichkeit zu geben, ihre ersten Schritte im Programmieren zu gehen. Errichten Sie eine Allianz, die mehr als 500 Schülerinnen und Schüler motiviert, und Sie erhalten ein Exzellenzzertifikat.",
 
         ],
         "button" => [

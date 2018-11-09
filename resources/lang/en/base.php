@@ -12,9 +12,13 @@
 return [
 
     'languages' => [
+        'al' => 'Albanian',
+        'ba' => 'Bosnian',
         'en' => 'English',
         'fr' => 'French',
         'bg' => 'Bulgarian',
+        'mk' => 'Macedonian',
+        'me' => 'Montenegrin',
         'mt' => 'Maltese',
         'hr' => 'Croatian',
         'de' => 'German',
@@ -26,7 +30,6 @@ return [
         'hu' => 'Hungarian',
         'ro' => 'Romanian',
         'nl' => 'Dutch',
-        'ga' => 'Irish',
         'sk' => 'Slovak',
         'it' => 'Italian',
         'sl' => 'Slovenian',
@@ -35,7 +38,9 @@ return [
         'es' => 'Spanish',
         'fi' => 'Finnish',
         'lt' => 'Lithuanian',
-        'sv' => 'Swedish'
+        'sv' => 'Swedish',
+        'rs' => 'Serbian',
+        'tr' => 'Turkish'
     ],
 
     'resources_local_title'=>'Coding resources from',

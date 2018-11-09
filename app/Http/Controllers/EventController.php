@@ -40,6 +40,18 @@ class EventController extends Controller
     }
 
 
+    public function myreportable()
+    {
+
+        $events = Event::where('creator_id', '=', Auth::user()->id)
+            ->whereNull('reported_at')
+            ->orderBy('created_at', 'desc')->paginate(6);
+
+        return view('event.myreportable', compact('events'));
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -151,7 +163,7 @@ class EventController extends Controller
      * @param  \App\Event $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
 
 
@@ -181,16 +193,7 @@ class EventController extends Controller
 
         $this->authorize('approve', $event);
 
-        $data = ['status' => "APPROVED", 'approved_by' => auth()->user()->id];
-
-        if (empty($event->codeweek_for_all_participation_code)){
-            $codeweek_4_all_generated_code = 'cw' . Carbon::now()->format('y') . '-' . str_random(5);
-            $data['codeweek_for_all_participation_code'] = $codeweek_4_all_generated_code;
-        }
-
-        $event->update($data);
-
-        Mail::to($event->owner->email)->queue(new \App\Mail\EventApproved($event, $event->owner));
+        $event->approve();
 
     }
 

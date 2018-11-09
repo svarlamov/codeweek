@@ -239,6 +239,21 @@
 
                         </div>
 
+                        <div class="form-group ">
+                            <label for="id_codeweek_forall_code_label" class="col-sm-3 control-label">
+                                @lang('event.codeweek_for_all_participation_code.title')
+                            </label>
+
+                            <div class="col-sm-9 first last">
+
+                                <input class="form-control" id="id_codeweek_forall_code" maxlength="75"
+                                       name="codeweek_for_all_participation_code" value="{{old('codeweek_for_all_participation_code')?old('codeweek_for_all_participation_code'):$event->codeweek_for_all_participation_code}}"></input>
+
+                                <span class="help-block">@lang('event.codeweek_for_all_participation_code.explanation') <a href="/codeweek4all">@lang('event.codeweek_for_all_participation_code.link')</a></span>
+                            </div>
+
+                        </div>
+
                         <div class="form-group">
                             <label for="id_picture" class="col-sm-3 control-label">
                                 @lang('edit.image')
@@ -259,7 +274,7 @@
                                 <div>
                                     <span class="help-block">@lang('edit.help')</span>
                                     {{--<span class="btn btn-sm btn-file">--}}
-                                    <picture-form></picture-form>
+                                    <picture-form picture="{{$event->picture_path()}}" image="{{$event->picture}}"></picture-form>
 
                                     {{--<span class="fileinput-new">Select image</span>--}}
                                     {{--<span class="fileinput-exists">Change</span>--}}
@@ -290,7 +305,7 @@
                             </label>
                             <div class="col-sm-9">
                                 <input class="form-control" id="id_user_email" name="user_email" type="email"
-                                       value="{{old('user_email')?old('user_email'):$event->user_email}}">
+                                       value="{{old('user_email')?old('user_email'):$event->user_email}}" required>
                                 @component('components.validation-errors', ['field'=>'user_email'])
                                 @endcomponent
                             </div>
@@ -300,8 +315,8 @@
                 </div>
                 <div class="col-md-6 first">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <div class="btn btn-primary btn-directional fa-plus-circle btn-lg submit-button-wrapper">
-                            <input type="submit" value=@lang('edit.edit')>
+                        <div class="btn btn-primary btn-directional fa-plus-circle btn-lg submit-button-wrapper" id="add-div">
+                            <input type="submit" id="add-button" onclick="javascript:return addEvent('{{__('school.required.location')}}');" value="@lang('event.button')">
                         </div>
                     </div>
                 </div>

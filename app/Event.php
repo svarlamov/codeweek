@@ -4,17 +4,19 @@ namespace App;
 
 use App\Filters\EventFilters;
 use App\Helpers\EventHelper;
+use App\Policies\EventPolicy;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Mail;
+use Log;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Laravel\Nova\Actions\Actionable;
 
 class Event extends Model
 {
-    use LogsActivity;
-
+    use LogsActivity, Actionable;
 
 
     protected $table = 'events';
@@ -44,10 +46,20 @@ class Event extends Model
         'organizer_type',
         'certificate_url',
         'certificate_generated_at',
-        'approved_by'
+        'approved_by',
+        'last_report_notification_sent_at'
+
 
     ];
 
+    protected $policies = [
+        'App\Event' => 'App\Policies\EventPolicy',
+        Event::class => EventPolicy::class,
+    ];
+
+    public function getJavascriptData(){
+        return $this->only(["geoposition","title","description"]);
+    }
 
     public function getDescriptionForEvent(string $eventName): string
     {
@@ -55,6 +67,13 @@ class Event extends Model
     }
 
     protected static $logFillable = true;
+
+
+    public function getEventUrlAttribute($url){
+        if ($url && strpos($url, "http") !== 0) return "http://" . $url;
+
+        return $url;
+    }
 
 
     public function path()
@@ -65,7 +84,7 @@ class Event extends Model
 
     public function picture_path()
     {
-        if ($this->picture){
+        if ($this->picture) {
             return env('AWS_URL') . $this->picture;
         } else {
             return 'https://s3-eu-west-1.amazonaws.com/codeweek-dev/events/pictures/event_default_picture.png';
@@ -139,16 +158,40 @@ class Event extends Model
 
     }
 
-    public function notifyAmbassadors(){
-
+    public function notifyAmbassadors()
+    {
 
         //Get the ambassador list based on the event country
         $ambassadors = User::role('ambassador')->where('country_iso', $this->country_iso)->get();
-
-        //send emails
-        foreach ($ambassadors as $ambassador) {
-            Mail::to($ambassador->email)->queue(new \App\Mail\EventCreated($this, $ambassador));
+        if ($ambassadors->isEmpty()) {
+            Mail::to('info@codeweek.eu')->queue(new \App\Mail\EventCreatedNoAmbassador($this));
+        } else {
+            //send emails
+            foreach ($ambassadors as $ambassador) {
+                Mail::to($ambassador->email)->queue(new \App\Mail\EventCreated($this, $ambassador));
+            }
         }
+
+    }
+
+    public function approve()
+    {
+
+
+        $data = ['status' => "APPROVED", 'approved_by' => auth()->user()->id];
+
+
+        $this->update($data);
+
+
+        if (!empty($this->user_email)) {
+            Mail::to($this->user_email)->queue(new \App\Mail\EventApproved($this, $this->owner));
+        } else if (!is_null($this->owner) && (!is_null($this->owner->email))) {
+            Mail::to($this->owner->email)->queue(new \App\Mail\EventApproved($this, $this->owner));
+        }
+
+
+        return true;
     }
 
 }

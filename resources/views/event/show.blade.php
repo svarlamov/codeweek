@@ -20,11 +20,17 @@
 
                     <strong>@lang('eventdetails.organised_by')</strong>
 
-                    <p> {{ $event->organizer }}</p>
+                    <p> {{ $event->organizer }}
+                        @can('approve', $event)
+                            <br/><a href="mailto:{{$event->user_email}}">{{$event->user_email}}</a>
+                        @endcan
+                    </p>
+
                     @if($event->contact_person)
 
                         <strong>@lang('eventdetails.contact_email')</strong><br>
-                        <p><a href="mailto:{{ $event->owner->email }}">{{ $event->contact_person }}</a></p>
+                        <p><a href="mailto:{{ $event->contact_person }}">{{ $event->contact_person }}</a>
+                        </p>
                     @endif
 
                     <address>
@@ -54,7 +60,7 @@
                         <div class="itens">
                             <ul class="event-list">
                                 @foreach($event->audiences as $audience)
-                                    <li><span class="label label-info">{{ $audience->name }}</span></li>
+                                    <li><span class="label label-info">@lang('event.audience.'.$audience->name)</span></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -65,7 +71,7 @@
                         <div class="itens">
                             <ul class="event-list">
                                 @foreach($event->themes as $theme)
-                                    <li><span class="label label-info">{{ $theme->name }}</span></li>
+                                    <li><span class="label label-info">@lang('event.theme.'.$theme->name)</span></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -81,6 +87,18 @@
                             </ul>
                         </div>
                     @endif
+
+                    @can('edit', $event)
+
+                        @if($event->codeweek_for_all_participation_code)
+
+                            <strong>@lang('event.codeweek_for_all_participation_code.title')</strong>
+                            <p>
+                                {{ $event->codeweek_for_all_participation_code }}
+                            </p>
+
+                        @endif
+                    @endcan
 
                     <strong>@lang('eventdetails.share')</strong>
                     <div class="share-event-wrapper">
@@ -105,13 +123,14 @@
 
 
                         @if (Auth::check())
-                            @if($event->creator_id === auth()->user()->id)
+                            @if($event->creator_id === auth()->user()->id && is_null($event->reported_at))
                                 <a href="{{route('edit_event',$event->id)}}" class="btn pull-right edit-event-btn">
                                     <i class="fa fa-pencil-square-o"></i>@lang('eventdetails.edit')</a>
 
                                 @if($event->status === 'PENDING')
                                     <div class="alert alert-warning">
-                                        <strong>@lang('eventdetails.note')</strong>@lang('eventdetails.pending_warning') <a
+                                        <strong>@lang('eventdetails.note')</strong>@lang('eventdetails.pending_warning')
+                                        <a
                                                 href="{{route('ambassadors')}}">@lang('eventdetails.pending_link')</a>.
                                     </div>
                                 @endif
@@ -122,7 +141,7 @@
 
                     <div class="event-jumbotron">
 
-                            <img src="{{$event->picture_path()}}"/>
+                        <img src="{{$event->picture_path()}}"/>
 
 
                     </div>
@@ -169,7 +188,7 @@
     <script>
 
 
-        var event = {!! json_encode($event) !!};
+        var event = {!! json_encode($event->getJavascriptData()) !!};
 
         var geoposition = event.geoposition;
         var coordinates = geoposition.split(",");
@@ -177,6 +196,8 @@
 
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
+            streetViewControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
             center: {
                 lat: parseFloat(coordinates[0]),
                 lng: parseFloat(coordinates[1])
